@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  Image
+  TouchableOpacity
 } from 'react-native'
-import {
-  inject,
-  observer
-} from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
 import TilesRow from '../../components/Tiles/TilesRow'
 import styles from './styles'
@@ -34,14 +28,17 @@ const stylesThreeRow = {
   styleItemRight: stylesTile.borderBottomRightWidth
 }
 
+@inject('gameStore')
+@observer
 class Home extends Component {
+
   constructor(props) {
     super(props)
-    this.props.store.initGame()
+    this.props.gameStore.initGame()
   }
 
   componentDidMount() {
-    this.props.store.initGame()
+    this.props.gameStore.initGame()
   }
 
   render() {
@@ -49,17 +46,17 @@ class Home extends Component {
       <View style={styles.container}>
         <TilesRow
           row={0}
-          store={this.props.store}
+          store={this.props.gameStore}
           styles={stylesOneRow}
         />
         <TilesRow
           row={1}
-          store={this.props.store}
+          store={this.props.gameStore}
           styles={stylesTwoRow}
         />
         <TilesRow
           row={2}
-          store={this.props.store}
+          store={this.props.gameStore}
           styles={stylesThreeRow}
         />
       </View>
@@ -67,4 +64,4 @@ class Home extends Component {
   }
 }
 
-export default inject('store')(observer(Home))
+export default Home

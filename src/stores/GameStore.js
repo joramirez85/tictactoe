@@ -1,14 +1,16 @@
-import {
-  observable,
-  action
-} from 'mobx'
+import { observable, action, makeObservable } from 'mobx'
 
 class GameStore {
+  constructor() {
+    makeObservable(this)
+  }
+
   @observable gameState = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
   ]
+
   @observable currentPlayer = 1
 
   @action setGameState = (gameState) => {
