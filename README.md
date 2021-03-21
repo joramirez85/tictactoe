@@ -6,14 +6,15 @@ You can check the app in your phone with the help of [expo app](https://play.goo
 
 Just scan the QR code in.
 
-![](https://i.ibb.co/R4xwtVV/qr-pokedesk.png)
+![](https://i.ibb.co/NCNGmbx/Screen-Shot-2021-03-20-at-16-54-05.png)
+https://ibb.co/XL5G3MX
 
-https://expo.io/@jora85/pokedesk
+https://expo.io/@jora85/projects/tictactoe
 
 Here some screens:
 ------------
-<img src="https://i.ibb.co/ZM2fKW1/IMG-3508.png" width="300">
-<img src="https://i.ibb.co/fq9mmbL/IMG-3509.png" width="300">
+<img src="https://i.ibb.co/nghM9s4/IMG-8245.png" width="300">
+<img src="https://i.ibb.co/FYW2BQt/IMG-8246.png" width="300">
 
 Run Project to scan code
 ------------
@@ -34,10 +35,8 @@ Modules
 Technical Features
 ------------
 - StandardJS to lint code
-- React Hooks like useState and useEffect (with async/await)
 - Navigation
 - SafeArea
-- Images with defaultSource
 - unit test
 
 Technical Requirements
