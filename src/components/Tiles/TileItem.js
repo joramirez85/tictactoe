@@ -10,9 +10,8 @@ import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons'
 import styles from './styles'
 
 const renderIcon = (row, col, store) => {
-  console.log('***** renderIcon')
   const value = store.gameState[row][col]
-  switch(value){
+  switch (value) {
     case 1:
       return (
         <Icon
@@ -72,7 +71,7 @@ const whoIsWinner = (store) => {
   return 0
 }
 
-const onTilePress = (row, col, store) => {
+const setMove = (row, col, store) => {
   const currentValue = store.gameState[row][col]
 
   if (currentValue !== 0) {
@@ -85,13 +84,34 @@ const onTilePress = (row, col, store) => {
 
   const nextPlayer = store.currentPlayer === 1 ? -1 : 1
   store.setCurrentPlayer(nextPlayer)
+}
+
+const getAvailableMoves = (store) => {
+  const moves = []
+  store.gameState.forEach((row, indexRow) => {
+    row.forEach((cell, indexCol) => {
+      if (!cell) moves.push([indexRow, indexCol])
+    })
+  })
+
+  return moves
+}
+
+const onTilePress = (row, col, store) => {
+  setMove(row, col, store)
+  const bestMoves = getAvailableMoves(store)
+  if (bestMoves.length) {
+    const [move] = bestMoves
+    const [row, col] = move
+    setMove(row, col, store)
+  }
 
   const winner = whoIsWinner(store)
   if (winner === 1) {
-    Alert.alert('1 es ganador')
+    Alert.alert('Player 1 is the winner')
     store.initGame()
   } else if (winner === -1) {
-    Alert.alert('2 es ganador')
+    Alert.alert('Player 2 is the winner')
     store.initGame()
   }
 }

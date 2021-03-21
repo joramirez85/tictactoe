@@ -8,7 +8,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "standard",
-    "delint": "standard --fix"
+    "delint": "standard --fix",
+    "test": "jest"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.3",
@@ -41,7 +42,31 @@
     "@babel/plugin-proposal-decorators": "^7.13.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-expo": "~8.1.0",
+    "jest-expo-enzyme": "^1.0.4",
     "standard": "^14.3.4"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "jest-expo-enzyme",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
+  },
+  "standard": {
+    "globals": [
+      "browser",
+      "expect",
+      "it",
+      "describe",
+      "jest",
+      "beforeEach",
+      "jasmine",
+      "beforeAll",
+      "afterEach",
+      "afterAll",
+      "by",
+      "element",
+      "device"
+    ]
+  }
 }

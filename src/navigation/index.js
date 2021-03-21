@@ -17,9 +17,9 @@ function RootNavigator () {
   return (
     <Stack.Navigator
       initialRouteName='Home'
-      screenOptions={{headerShown: false}}
+      screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen options={{headerShown: false, title: 'Inicio'}} name='Home' component={Home} />
+      <Stack.Screen options={{ headerShown: false, title: 'Inicio' }} name='Home' component={Home} />
     </Stack.Navigator>
   )
 }

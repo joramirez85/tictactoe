@@ -22,12 +22,12 @@ class GameStore {
   }
 
   @action initGame = () => {
-    console.log('*** === initGame')
     const gameState = [
       [0, 0, 0],
       [0, 0, 0],
       [0, 0, 0]
     ]
+    this.setCurrentPlayer(1)
     this.setGameState(gameState)
   }
 }

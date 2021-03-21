@@ -41,6 +41,10 @@ class Home extends Component {
     this.props.gameStore.initGame()
   }
 
+  handleNewGame() {
+    this.props.gameStore.initGame()
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -59,6 +63,12 @@ class Home extends Component {
           store={this.props.gameStore}
           styles={stylesThreeRow}
         />
+        <TouchableOpacity
+          style={styles.newGameBtn}
+          onPress={() => this.handleNewGame()}
+        >
+          <Text style={styles.btnText}>New Game</Text>
+        </TouchableOpacity>
       </View>
     )
   }
