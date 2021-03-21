@@ -1,7 +1,7 @@
 import { observable, action, makeObservable } from 'mobx'
 
 class GameStore {
-  constructor() {
+  constructor () {
     makeObservable(this)
   }
 

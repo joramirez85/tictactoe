@@ -31,21 +31,20 @@ const stylesThreeRow = {
 @inject('gameStore')
 @observer
 class Home extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.props.gameStore.initGame()
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.gameStore.initGame()
   }
 
-  handleNewGame() {
+  handleNewGame () {
     this.props.gameStore.initGame()
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <TilesRow
