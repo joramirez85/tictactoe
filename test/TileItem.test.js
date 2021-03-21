@@ -20,7 +20,7 @@ describe('TileItem suite', () => {
       col: 1,
       store: mockStore
     }
-    const wrapper = shallow(<TileItem {...props}/>)
+    const wrapper = shallow(<TileItem {...props} />)
     expect(wrapper.length).toBe(1)
   })
 
@@ -30,7 +30,7 @@ describe('TileItem suite', () => {
       col: 1,
       store: mockStore
     }
-    const wrapper = shallow(<TileItem {...props}/>)
+    const wrapper = shallow(<TileItem {...props} />)
     const icon = wrapper.find('Icon')
     expect(icon.length).toBe(1)
     expect(icon.props().name).toBe('close')
@@ -42,10 +42,9 @@ describe('TileItem suite', () => {
       col: 2,
       store: mockStore
     }
-    const wrapper = shallow(<TileItem {...props}/>)
+    const wrapper = shallow(<TileItem {...props} />)
     const icon = wrapper.find('Icon')
     expect(icon.length).toBe(1)
     expect(icon.props().name).toBe('circle-outline')
   })
-
 })

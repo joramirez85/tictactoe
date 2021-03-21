@@ -25,7 +25,7 @@ describe('TilesRow suite', () => {
         styleItemRight: ''
       }
     }
-    const wrapper = shallow(<TilesRow {...props}/>)
+    const wrapper = shallow(<TilesRow {...props} />)
     expect(wrapper.length).toBe(1)
   })
 
@@ -40,9 +40,8 @@ describe('TilesRow suite', () => {
         styleItemRight: ''
       }
     }
-    const wrapper = shallow(<TilesRow {...props}/>)
+    const wrapper = shallow(<TilesRow {...props} />)
     const TileItems = wrapper.find('Tile')
     expect(TileItems).toHaveLength(3)
   })
-
 })
