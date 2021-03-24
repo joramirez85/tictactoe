@@ -28,6 +28,10 @@ const stylesThreeRow = {
   styleItemRight: stylesTile.borderBottomRightWidth
 }
 
+const handleNewGame = (gameStore) => {
+  gameStore.initGame()
+}
+
 @inject('gameStore')
 @observer
 class Home extends Component {
@@ -37,10 +41,6 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    this.props.gameStore.initGame()
-  }
-
-  handleNewGame () {
     this.props.gameStore.initGame()
   }
 
@@ -64,7 +64,7 @@ class Home extends Component {
         />
         <TouchableOpacity
           style={styles.newGameBtn}
-          onPress={() => this.handleNewGame()}
+          onPress={() => handleNewGame(this.props.gameStore)}
         >
           <Text style={styles.btnText}>New Game</Text>
         </TouchableOpacity>

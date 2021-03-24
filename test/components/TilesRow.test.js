@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import TilesRow from '../src/components/Tiles/TilesRow'
+import TilesRow from '../../src/components/Tiles/TilesRow'
 
 describe('TilesRow suite', () => {
   let mockStore

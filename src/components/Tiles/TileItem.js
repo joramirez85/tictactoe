@@ -8,6 +8,10 @@ import { observer } from 'mobx-react'
 import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons'
 
 import styles from './styles'
+import {
+  minimax,
+  isWinner
+} from '../../utils/ai'
 
 const renderIcon = (row, col, store) => {
   const value = store.gameState[row][col]
@@ -31,46 +35,6 @@ const renderIcon = (row, col, store) => {
   }
 }
 
-const whoIsWinner = (store) => {
-  const NUM_TILES = 3
-  let sum = 0
-  const gameState = store.gameState
-
-  for (let i = 0; i < NUM_TILES; i++) {
-    sum = gameState[i][0] + gameState[i][1] + gameState[i][2]
-    if (sum === 3) {
-      return 1
-    } else if (sum === -3) {
-      return -1
-    }
-  }
-
-  for (let i = 0; i < NUM_TILES; i++) {
-    sum = gameState[0][i] + gameState[1][i] + gameState[2][i]
-    if (sum === 3) {
-      return 1
-    } else if (sum === -3) {
-      return -1
-    }
-  }
-
-  sum = gameState[0][0] + gameState[1][1] + gameState[2][2]
-  if (sum === 3) {
-    return 1
-  } else if (sum === -3) {
-    return -1
-  }
-
-  sum = gameState[2][0] + gameState[1][1] + gameState[0][2]
-  if (sum === 3) {
-    return 1
-  } else if (sum === -3) {
-    return -1
-  }
-
-  return 0
-}
-
 const setMove = (row, col, store) => {
   const currentValue = store.gameState[row][col]
 
@@ -86,33 +50,21 @@ const setMove = (row, col, store) => {
   store.setCurrentPlayer(nextPlayer)
 }
 
-const getAvailableMoves = (store) => {
-  const moves = []
-  store.gameState.forEach((row, indexRow) => {
-    row.forEach((cell, indexCol) => {
-      if (!cell) moves.push([indexRow, indexCol])
-    })
-  })
-
-  return moves
-}
-
 const onTilePress = (row, col, store) => {
+  const { gameState } = store
   setMove(row, col, store)
-  const bestMoves = getAvailableMoves(store)
-  if (bestMoves.length) {
-    const [move] = bestMoves
-    const [row, col] = move
-    setMove(row, col, store)
-  }
 
-  const winner = whoIsWinner(store)
-  if (winner === 1) {
+  if (isWinner(gameState) === 1) {
     Alert.alert('Player 1 is the winner')
     store.initGame()
-  } else if (winner === -1) {
+  } else if (isWinner(gameState) === -1) {
     Alert.alert('Player 2 is the winner')
     store.initGame()
+  } else {
+    const bestMove = minimax(gameState, -1, 1)
+    console.log('==== bestMove: ', bestMove)
+    const [rowBest, colBest] = bestMove.id
+    setMove(rowBest, colBest, store)
   }
 }
 
